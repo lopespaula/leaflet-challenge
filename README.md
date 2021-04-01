@@ -24,7 +24,7 @@ The USGS is interested in building a new set of tools that will allow them visua
 
 ### Level 1: Basic Visualization
 
-![2-BasicMap](Images/2-BasicMap.png)
+![earthquake_dataset](Images/earthquake_dataset.png)
 
 Your first task is to visualize an earthquake data set.
 

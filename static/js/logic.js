@@ -97,7 +97,32 @@ function createFeatures(earthquakeData) {
         layers: [streetmap, earthquakes]
       });
     
+      // Create a layer control
+      // Pass in our baseMaps and overlayMaps
+      // Add the layer control to the map
+      L.control.layers(baseMaps, overlayMaps, {
+        collapsed: false
+      }).addTo(myMap);
+    
+      var legend = L.control({position: 'bottomright'});
+    
+      legend.onAdd = function (map) {
       
+          var div = L.DomUtil.create('div', 'info legend'),
+              grades = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4],
+              colors = ["white", "black", "gray", "lightgreen", "green", "blue", "yellow", "orange", "red"]
+              labels = [];
+    
+    
+          // loop through our density intervals and generate a label with a colored square for each interval
+          for (var i = 0; i < grades.length; i++) {
+              div.innerHTML +=
+                  '<i style="background:' + colors[i] + '"></i> ' +
+                  grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+          }
+      
+          return div;
+      };
       
       legend.addTo(myMap);
   
